@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .board {
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            align-items: center;
+        }
+
+        table {
+            box-sizing: border-box;
+            width: 700px;
+            height: 500px;
+        }
+
+        td, th {
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: antiquewhite;
+        }
+
+        .btn {
+        }
+    </style>
+</head>
+<body>
+
+<div class="board">
+    <form action="/boards/write" method="post" enctype="multipart/form-data">
+        <div><span>[Post]</span></div>
+        <div><label for="title">유저 네임<input type="text" name="title" id="title"></label></div>
+        <div><label for="content">내용<textarea type="content" name="content" id="content"></textarea></label></div>
+        <div><input type="file" name="files" id="files" multiple></div>
+        <div><input type="submit" value="글쓰기"</div>
+    </form>
+    <a href="/boards">뒤로 가기</a>
+</div>
+
+<script>
+  const writeBtn = document.getElementById('writeBoard');
+  writeBtn.addEventListener(('click') , (e) => {
+    // console.log(e);
+    // console.log(e.target.innerText);
+    location.href = "/boards/write";
+  })
+</script>
+</body>
+</html>

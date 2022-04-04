@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<style>
+    .board {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+    }
+
+    table {
+        box-sizing: border-box;
+        max-height: 500px;
+        max-width: 800px;
+    }
+
+    td, th {
+        border: 1px solid black;
+        height: 10px;
+        width: 200px;
+    }
+
+    th {
+        background-color: antiquewhite;
+    }
+
+    .btn {
+    }
+</style>
+</head>
+<body>
+
+<div class="board">
+    <span>안녕하세요 <%=email%> 님!</span><a href="/auth/logout">로그아웃</a>
+    <img src="/images/nestjs.png" width="200" height="100">
+    <table>
+        <thead>
+            <tr>
+                <th>게시글 고유번호</th>
+                <th>제목</th>
+                <th>내용</th>
+<!--                <th>published</th>-->
+                <th>작성자 고유번호</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <% for(let i=0; i<posts.length; i++) { %>
+            <tr>
+                <td><%=posts[i].id%></td>
+                <td><%=posts[i].title%></td>
+                <td><%=posts[i].content%></td>
+<!--                <td><%=posts[i].published%></td>-->
+                <td><%=posts[i].authorId%></td>
+            </tr>
+            <% } %>
+
+        </tbody>
+    </table>
+    <div class="btn">
+        <button id="writeBoard">글쓰기</button>
+    </div>
+</div>
+
+<script>
+  const writeBtn = document.getElementById('writeBoard');
+  writeBtn.addEventListener(('click') , (e) => {
+        // console.log(e);
+        // console.log(e.target.innerText);
+    location.href = "/boards/write";
+    })
+</script>
+</body>
+</html>

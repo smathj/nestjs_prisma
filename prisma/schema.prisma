@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+// User Table의 Model
+model User {
+  id    Int     @default(autoincrement()) @id
+  email String  @unique
+  name  String?
+  password String
+  boards Board[]    // 일대다 관계
+  files File[]      // 일대다 관계
+  createdAt  DateTime   @default(now())
+}
+
+// board Table의 Model
+model Board {
+  id        Int      @default(autoincrement()) @id
+  title     String
+  content   String?
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  Int?
+  BoardManyFile File[] // 게시글과 파일은 일대다 관계
+  createdAt  DateTime   @default(now())
+  updatedAt DateTime? @updatedAt
+}
+
+// File 파일 테이블의 Model
+model File {
+   f_seq Int    @default(autoincrement()) @id
+   f_org_nm String
+   f_sv_nm String
+   f_sv_path String
+   f_size String
+   owner User @relation(fields: [ownerId], references: [id])
+   ownerId Int
+   FileBelongsToBoard Board @relation(fields: [boardId], references: [id])
+   boardId Int
+   createdAt  DateTime   @default(now())
+}
