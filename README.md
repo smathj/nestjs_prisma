@@ -71,3 +71,59 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+## 모듈 각가지
+```bash
+// 전역 설치
+npm install -g @nestjs/cli
+
+// 프로젝트 생성
+nest new hello-prisma
+
+================================================================================
+✅ 프리즈마
+
+
+// 프리즈마 설치
+npm i -D prisma
+
+
+// 프리즈마 초기셋팅
+npx prisma init
+
+
+// 모델로 디비에 적용
+npx prisma migrate dev --name init
+
+
+// 쿼리를 위한 쿼리빌더 클라이언트 설치
+npm install @prisma/client
+
+
+// 앞으로 모델을 수정할때마다 다음 명령어를 수행
+npx prisma generate 
+
+
+
+
+================================================================================
+✅ 암호화
+
+npm i bcrypt
+
+npm i -D @types/bcrypt
+
+
+
+
+================================================================================
+✅ 업로드
+npm i -D @types/multer
+
+
+    MulterModule.register({
+      dest: './public/images',
+    }),
+
+```
